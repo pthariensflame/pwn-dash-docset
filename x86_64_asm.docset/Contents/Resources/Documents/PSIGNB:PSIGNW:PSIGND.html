@@ -1,0 +1,256 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:x86="http://www.felixcloutier.com/x86"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><link rel="stylesheet" type="text/css" href="style.css"/><a class="dashingAutolink" name="autolink-395"></a><a class="dashAnchor" name="//apple_ref/cpp/Instruction/PSIGNB%2FPSIGNW%2FPSIGND%0A%09%09%E2%80%94%20Packed%20SIGN"></a><title>PSIGNB/PSIGNW/PSIGND
+		&mdash; Packed SIGN</title></head><body><header><nav><ul><li><a href="index.html">Index</a></li><li>April 2022</li></ul></nav></header><h1>PSIGNB/PSIGNW/PSIGND
+		&mdash; Packed SIGN</h1>
+
+
+
+<table>
+<tbody><tr>
+<th>Opcode/Instruction</th>
+<th>Op/En</th>
+<th>64/32 bit Mode Support</th>
+<th>CPUID Feature Flag</th>
+<th>Description</th></tr>
+<tr>
+<td>NP 0F 38 08 /r<sup>1</sup> PSIGNB <em>mm1, mm2/m64</em></td>
+<td>RM</td>
+<td>V/V</td>
+<td>SSSE3</td>
+<td>Negate/zero/preserve packed byte integers in <em>mm1</em> depending on the corresponding sign in <em>mm2/m64.</em></td></tr>
+<tr>
+<td>66 0F 38 08 /r PSIGNB <em>xmm1, xmm2/m128</em></td>
+<td>RM</td>
+<td>V/V</td>
+<td>SSSE3</td>
+<td>Negate/zero/preserve packed byte integers in <em>xmm1</em> depending on the corresponding sign in <em>xmm2/m128</em>.</td></tr>
+<tr>
+<td>NP 0F 38 09 /r<sup>1</sup> PSIGNW <em>mm1, mm2/m64</em></td>
+<td>RM</td>
+<td>V/V</td>
+<td>SSSE3</td>
+<td>Negate/zero/preserve packed word integers in <em>mm1</em> depending on the corresponding sign in <em>mm2/m128</em>.</td></tr>
+<tr>
+<td>66 0F 38 09 /r PSIGNW <em>xmm1, xmm2/m128</em></td>
+<td>RM</td>
+<td>V/V</td>
+<td>SSSE3</td>
+<td>Negate/zero/preserve packed word integers in <em>xmm1</em> depending on the corresponding sign in <em>xmm2/m128</em>.</td></tr>
+<tr>
+<td>NP 0F 38 0A /r<sup>1</sup> PSIGND <em>mm1, mm2/m64</em></td>
+<td>RM</td>
+<td>V/V</td>
+<td>SSSE3</td>
+<td>Negate/zero/preserve packed doubleword integers in <em>mm1</em> depending on the corresponding sign in <em>mm2/m128</em>.</td></tr>
+<tr>
+<td>66 0F 38 0A /r PSIGND <em>xmm1, xmm2/m128</em></td>
+<td>RM</td>
+<td>V/V</td>
+<td>SSSE3</td>
+<td>Negate/zero/preserve packed doubleword integers in <em>xmm1</em> depending on the corresponding sign in <em>xmm2/m128</em>.</td></tr>
+<tr>
+<td>VEX.128.66.0F38.WIG 08 /r VPSIGNB <em>xmm1, xmm2, xmm3/m128</em></td>
+<td>RVM</td>
+<td>V/V</td>
+<td>AVX</td>
+<td>Negate/zero/preserve packed byte integers in <em>xmm2</em> depending on the corresponding sign in <em>xmm3/m128</em>.</td></tr>
+<tr>
+<td>VEX.128.66.0F38.WIG 09 /r VPSIGNW <em>xmm1, xmm2, xmm3/m128</em></td>
+<td>RVM</td>
+<td>V/V</td>
+<td>AVX</td>
+<td>Negate/zero/preserve packed word integers in <em>xmm2</em> depending on the corresponding sign in <em>xmm3/m128</em>.</td></tr>
+<tr>
+<td>VEX.128.66.0F38.WIG 0A /r VPSIGND <em>xmm1, xmm2, xmm3/m128</em></td>
+<td>RVM</td>
+<td>V/V</td>
+<td>AVX</td>
+<td>Negate/zero/preserve packed doubleword integers in <em>xmm2</em> depending on the corresponding sign in <em>xmm3/m128</em>.</td></tr>
+<tr>
+<td>VEX.256.66.0F38.WIG 08 /r VPSIGNB <em>ymm1, ymm2, ymm3/m256</em></td>
+<td>RVM</td>
+<td>V/V</td>
+<td>AVX2</td>
+<td>Negate packed byte integers in <em>ymm2</em> if the corresponding sign in <em>ymm3/m256</em> is less than zero.</td></tr>
+<tr>
+<td>VEX.256.66.0F38.WIG 09 /r VPSIGNW <em>ymm1, ymm2, ymm3/m256</em></td>
+<td>RVM</td>
+<td>V/V</td>
+<td>AVX2</td>
+<td>Negate packed 16-bit integers in <em>ymm2</em> if the corresponding sign in <em>ymm3/m256</em> is less than zero.</td></tr>
+<tr>
+<td>VEX.256.66.0F38.WIG 0A /r VPSIGND <em>ymm1, ymm2, ymm3/m256</em></td>
+<td>RVM</td>
+<td>V/V</td>
+<td>AVX2</td>
+<td>Negate packed doubleword integers in <em>ymm2</em> if the corresponding sign in <em>ymm3/m256</em> is less than zero.</td></tr>
+<tr>
+<td colspan="5">NOTES: 1. See note in Section 2.4, &ldquo;AVX and SSE Instruction Exception Specification&rdquo; in the <em>Intel&reg; 64 and IA-32 Architectures Software Developer&rsquo;s Manual, Volume 2A</em> and Section 22.25.3, &ldquo;Exception Conditions of Legacy SIMD Instructions Operating on MMX Registers&rdquo; in the <em>Intel&reg; 64 and IA-32 Architectures Software Developer&rsquo;s Manual, Volume 3A</em>.</td></tr></tbody></table>
+<h2 id="instruction-operand-encoding">Instruction Operand Encoding<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#instruction-operand-encoding">
+			&para;
+		</a></h2>
+<table>
+<tbody><tr>
+<td>Op/En</td>
+<td>Operand 1</td>
+<td>Operand 2</td>
+<td>Operand 3</td>
+<td>Operand 4</td></tr>
+<tr>
+<td>RM</td>
+<td>ModRM:reg (r, w)</td>
+<td>ModRM:r/m (r)</td>
+<td>NA</td>
+<td>NA</td></tr>
+<tr>
+<td>RVM</td>
+<td>ModRM:reg (w)</td>
+<td>VEX.vvvv (r)</td>
+<td>ModRM:r/m (r)</td>
+<td>NA</td></tr></tbody></table>
+<h2 id="description">Description<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#description">
+			&para;
+		</a></h2>
+<p>(V)PSIGNB/(V)PSIGNW/(V)PSIGND negates each data element of the destination operand (the first operand) if the signed integer value of the corresponding data element in the source operand (the second operand) is less than zero. If the signed integer value of a data element in the source operand is positive, the corresponding data element in the destination operand is unchanged. If a data element in the source operand is zero, the corresponding data element in the destination operand is set to zero.</p>
+<p>(V)PSIGNB operates on signed bytes. (V)PSIGNW operates on 16-bit signed words. (V)PSIGND operates on signed 32-bit integers.</p>
+<p>Legacy SSE instructions: Both operands can be MMX registers. In 64-bit mode, use the REX prefix to access additional registers.</p>
+<p>128-bit Legacy SSE version: The first source and destination operands are XMM registers. The second source operand is an XMM register or a 128-bit memory location. Bits (MAXVL-1:128) of the corresponding YMM destination register remain unchanged.</p>
+<p>VEX.128 encoded version: The first source and destination operands are XMM registers. The second source operand is an XMM register or a 128-bit memory location. Bits (MAXVL-1:128) of the destination YMM register are zeroed. VEX.L must be 0, otherwise instructions will #UD.</p>
+<p>VEX.256 encoded version: The first source and destination operands are YMM registers. The second source operand is an YMM register or a 256-bit memory location.</p>
+<h2 id="operation">Operation<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#operation">
+			&para;
+		</a></h2>
+<pre>def byte_sign(control, input_val):
+    if control&lt;0:
+        return negate(input_val)
+    elif control==0:
+        return 0
+    return input_val
+def word_sign(control, input_val):
+    if control&lt;0:
+        return negate(input_val)
+    elif control==0:
+        return 0
+    return input_val
+def dword_sign(control, input_val):
+    if control&lt;0:
+        return negate(input_val)
+    elif control==0:
+        return 0
+    return input_val
+</pre>
+<h3 id="psignb-srcdest--src">PSIGNB srcdest, src<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#psignb-srcdest--src">
+			&para;
+		</a></h3>
+<h3 id="---mmx-64-bit-operands">// MMX 64-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#---mmx-64-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=64
+KL := VL/8
+for i in 0...KL-1:
+    srcdest.byte[i] := byte_sign(src.byte[i], srcdest.byte[i])
+</pre>
+<h3 id="psignw-srcdest--src----mmx-64-bit-operands">PSIGNW srcdest, src // MMX 64-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#psignw-srcdest--src----mmx-64-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=64
+KL := VL/16
+FOR i in 0...KL-1:
+    srcdest.word[i] := word_sign(src.word[i], srcdest.word[i])
+</pre>
+<h3 id="psignd-srcdest--src----mmx-64-bit-operands">PSIGND srcdest, src // MMX 64-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#psignd-srcdest--src----mmx-64-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=64
+KL := VL/32
+FOR i in 0...KL-1:
+    srcdest.dword[i] := dword_sign(src.dword[i], srcdest.dword[i])
+</pre>
+<h3 id="psignb-srcdest--src----sse-128-bit-operands">PSIGNB srcdest, src // SSE 128-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#psignb-srcdest--src----sse-128-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=128
+KL := VL/8
+FOR i in 0...KL-1:
+    srcdest.byte[i] := byte_sign(src.byte[i], srcdest.byte[i])
+</pre>
+<h3 id="psignw-srcdest--src----sse-128-bit-operands">PSIGNW srcdest, src // SSE 128-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#psignw-srcdest--src----sse-128-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=128
+KL := VL/16
+FOR i in 0...KL-1:
+    srcdest.word[i] := word_sign(src.word[i], srcdest.word[i])
+</pre>
+<h3 id="psignd-srcdest--src----sse-128-bit-operands">PSIGND srcdest, src // SSE 128-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#psignd-srcdest--src----sse-128-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=128
+KL := VL/32
+FOR i in 0...KL-1:
+    srcdest.dword[i] := dword_sign(src.dword[i], srcdest.dword[i])
+</pre>
+<h3 id="vpsignb-dest--src1--src2----avx-128-bit-or-256-bit-operands">VPSIGNB dest, src1, src2 // AVX 128-bit or 256-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#vpsignb-dest--src1--src2----avx-128-bit-or-256-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=(128,256)
+KL := VL/8
+FOR i in 0...KL-1:
+    dest.byte[i] := byte_sign(src2.byte[i], src1.byte[i])
+DEST[MAXVL-1:VL] := 0
+</pre>
+<h3 id="vpsignw-dest--src1--src2----avx-128-bit-or-256-bit-operands">VPSIGNW dest, src1, src2 // AVX 128-bit or 256-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#vpsignw-dest--src1--src2----avx-128-bit-or-256-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=(128,256)
+KL := VL/16
+FOR i in 0...KL-1:
+    dest.word[i] := word_sign(src2.word[i], src1.word[i])
+DEST[MAXVL-1:VL] := 0
+</pre>
+<h3 id="vpsignd-dest--src1--src2----avx-128-bit-or-256-bit-operands">VPSIGND dest, src1, src2 // AVX 128-bit or 256-bit operands<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#vpsignd-dest--src1--src2----avx-128-bit-or-256-bit-operands">
+			&para;
+		</a></h3>
+<pre>VL=(128,256)
+KL := VL/32
+FOR i in 0...KL-1:
+    dest.dword[i] := dword_sign(src2.dword[i], src1.dword[i])
+DEST[MAXVL-1:VL] := 0
+</pre>
+<h2 id="intel-c-c++-compiler-intrinsic-equivalent">Intel C/C++ Compiler Intrinsic Equivalent<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#intel-c-c++-compiler-intrinsic-equivalent">
+			&para;
+		</a></h2>
+<pre>PSIGNB: __m64 _mm_sign_pi8 (__m64 a, __m64 b)
+</pre>
+<pre>(V)PSIGNB: __m128i _mm_sign_epi8 (__m128i a, __m128i b)
+</pre>
+<pre>VPSIGNB: __m256i _mm256_sign_epi8 (__m256i a, __m256i b)
+</pre>
+<pre>PSIGNW: __m64 _mm_sign_pi16 (__m64 a, __m64 b)
+</pre>
+<pre>(V)PSIGNW: __m128i _mm_sign_epi16 (__m128i a, __m128i b)
+</pre>
+<pre>VPSIGNW: __m256i _mm256_sign_epi16 (__m256i a, __m256i b)
+</pre>
+<pre>PSIGND: __m64 _mm_sign_pi32 (__m64 a, __m64 b)
+</pre>
+<pre>(V)PSIGND: __m128i _mm_sign_epi32 (__m128i a, __m128i b)
+</pre>
+<pre>VPSIGND: __m256i _mm256_sign_epi32 (__m256i a, __m256i b)
+</pre>
+<h2 class="exceptions" id="simd-floating-point-exceptions">SIMD Floating-Point Exceptions<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#simd-floating-point-exceptions">
+			&para;
+		</a></h2>
+<p>None.</p>
+<h2 class="exceptions" id="other-exceptions">Other Exceptions<a class="anchor" href="./PSIGNB:PSIGNW:PSIGND.html#other-exceptions">
+			&para;
+		</a></h2>
+<p>See <span class="not-imported">Table 2-21</span>, &ldquo;Type 4 Class Exception Conditions&rdquo;; additionally:</p>
+<table>
+<tbody><tr>
+<td>#UD</td>
+<td>If VEX.L = 1.</td></tr></tbody></table><footer><p>
+		This UNOFFICIAL, mechanically-separated, non-verified reference is provided for convenience, but it may be
+		inc<span style="opacity: 0.2">omp</span>lete or b<sub>r</sub>oke<sub>n</sub> in various obvious or non-obvious
+		ways. Refer to <a href="https://software.intel.com/en-us/download/intel-64-and-ia-32-architectures-sdm-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4">Intel&reg; 64 and IA-32 Architectures Software Developer&rsquo;s Manual</a> for anything serious.
+	</p></footer>
+</body></html>
